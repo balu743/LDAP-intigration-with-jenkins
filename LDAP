@@ -1,0 +1,21 @@
+apt-get update
+    2  apt-get install java*
+    3  wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+    4  sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+    5  apt update
+    6  apt install jenkins
+    7  systemctl status jenkins
+    8  cat /var/lib/jenkins/secrets/initialAdminPassword
+    9  hostnamectl set-hostname ldap.example.com
+   10  echo "54.221.63.167 ldap.example.com" | sudo tee -a /etc/hosts
+   11  apt update
+   12  apt -y install slapd ldap-utils
+   13  slapcat
+   14  vi basedn.ldif
+   15  ldapadd -x -D cn=admin,dc=example,dc=com -W -f basedn.ldif
+   16  apt -y install apache2 php php-cgi libapache2-mod-php php-mbstring php-common php-pear
+   17  a2enconf php7.2-cgi
+   18  systemctl reload apache2
+   19  apt -y install ldap-account-manager
+   20  /var/lib/jenkins/secrets/initialAdminPassword
+   21  cat /var/lib/jenkins/secrets/initialAdminPassword
